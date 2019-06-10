@@ -1,0 +1,30 @@
+﻿{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block app_content %}
+	<div class="row">
+		<div class="col-md-4">
+			{{ wtf.quick_form(form) }}
+		</div>
+	</div>
+	{% if year %}
+	<h1>Отчет за {{ month }} {{ year }} года</h1>
+	<table class="table table-striped">
+		<tr>
+			<td><p>Заказ</p></td>
+			<td><p>Сумма, руб.</p></td>
+		</tr>
+		{% for order in orders %}
+		<tr>
+			<td><p><a href="{{ url_for('order', id=order.id) }}">Заказ №</a></p></td>
+			<td><p>{{ order.price }}</p></td>
+		</tr>
+		{% endfor %}
+		<tr>
+			<td><p>Всего:</p></td>
+			<td><p>{{ global_sum }}</p></td>
+		</tr>
+	</table>
+	{% endif %}
+{% endblock %}
+	

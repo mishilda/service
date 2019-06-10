@@ -1,0 +1,25 @@
+﻿{% extends "base.html" %}
+{% block app_content %}
+	<table>
+		<tr>
+			<td>
+				<p>ФИО:</p>
+				<p>Паспортные данные:</p>
+				<p>Телефон:</p>
+				<p>Номер машины</p>
+				<p>Модель машины</p>
+				<p>Цвет машины</p>	
+			</td>
+			<td>
+				<p>{{ client.name }}</p>
+				<p>{{ client.passport }}</p>
+				<p>{{ client.phone }}</p>
+				<p>{{ client.car_num }}</p>
+				<p>{{ client.car_model }}</p>
+				<p>{{ client.car_colour }}</p>
+			</td>
+		</tr>
+		<tr><td><a href="{{ url_for('edit_client', id=client.id) }}">Редактировать</a></td></tr>
+	</table>
+{% endblock %}
+				

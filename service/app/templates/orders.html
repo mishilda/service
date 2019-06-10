@@ -1,0 +1,21 @@
+﻿{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block app_content %}	
+	<h1>Заказы</h1>
+	<hr>
+	<a href="{{ url_for('add_order') }}">Новый заказ</a>	
+	<hr>
+	<div class="row">
+		<div class="col-md-4">
+			{{ wtf.quick_form(form) }}
+		</div>
+	</div>
+	{% if month %}
+	<h3>Заказы за {{ month }} {{ year }} года</h3>
+	{% endif %}
+	{% for order in orders %}
+	<p><a href="{{ url_for('order', id=order.id) }}">Заказ № {{ order.id }}</a></p>
+	<hr>
+	{% endfor %}
+{% endblock %}

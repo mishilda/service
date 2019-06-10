@@ -1,0 +1,28 @@
+﻿{% extends "base.html" %}
+
+{% block app_content %}
+	<nav class="navbar navbar-default">
+		<a href="{{ url_for('report_for_this_month') }}">Отчет за текущий месяц</a>
+		<a href="{{ url_for('report_for_this_year') }}">Отчет за текущий год</a>
+		<a href="{{ url_for('report_for_year') }}">Отчеты по годам</a>
+		<a href="{{ url_for('report_for_month') }}">Отчеты по месяцам</a>
+	</nav>
+	<table class="table table-striped">
+		<tr>
+			<td><p>Год</p></td>
+			<td><p>Сумма, руб.</p></td>
+		</tr>
+	{% for i,year in years %}
+	{% if sum_for_year[i] %}
+		<tr>
+			<td><p>{{ year }}</p></td>
+			<td><p>{{ sum_for_year[i] }}</p><td>
+		</tr>
+	{% endif %}
+	{% endfor %}
+		<tr>
+			<td><p>Всего:</p></td>
+			<td><p>{{ global_sum }}</p></td>	
+		</tr>
+	</table>
+{% endblock %}

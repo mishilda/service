@@ -1,0 +1,29 @@
+﻿{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block app_content %}
+	<div class="row">
+		<div class="col=md-4">
+			{{ wtf.quick_form(form) }}
+		</div>
+	</div>
+	{% if year %}
+	<h1>Отчет за {{ year }} год</h1>
+	<table class="table table-striped"> 
+		<tr>
+			<td><p>Месяц</p></td>
+			<td><p>Сумма, руб.</p></td>
+		</tr>
+		{% for i,month in months %}
+		<tr>
+			<td><p>{{ month }}</p></td>
+			<td><p>{{ sum_for_month[i] }}</p></td>
+		</tr>
+		{% endfor %}
+		<tr>
+			<td><p>Всего:</p></td>
+			<td><p>{{ global_sum }}</p></td>
+		</tr>
+	</table>
+	{% endif %}
+{% endblock %}

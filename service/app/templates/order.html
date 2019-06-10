@@ -1,0 +1,30 @@
+﻿{% extends "base.html" %}
+{% block app_content %}
+	<table>
+		<tr>
+			<td>
+				<p>Клиент</p>
+				<p>Дата заключения договора</p>
+				<p>Причина обслуживания</p>
+				<p>Вид обслуживания</p>
+				<p>Стоимость обслуживания</p>		
+			</td>
+			<td>
+				<p><a href="{{ url_for('client', id=client.id) }}">{{ client.name }}</a></p>
+				<p>{{ order.date }}</p>
+				<p>{{ order.cause }}</p>
+				{% if order.guarantee %}
+				<p>Гарантийное</p>
+				{% else %}
+				<p>Негарантийное</p>
+				{% endif %}
+				<p>{{ order.price }}</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<a href="{{ url_for('edit_order', id=order.id) }}">Редактировать</a>
+			</td>
+		</tr>
+	</table>
+{% endblock %}
